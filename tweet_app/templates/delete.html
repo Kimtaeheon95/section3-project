@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Delete Users
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+Delete users that you added before
+{% endblock  %}
+
+{% block main_body  %}
+This is Case-Sensitive
+
+
+<form method="POST" action="/delete">
+  <input name="delete_user" class="form-control" type="text" placeholder="Username">
+  <br/>
+  <input type="submit" class="btn btn-primary" value="Delete" />
+</form>
+
+<br/>
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Full name</th>
+      <th scope="col">Followers</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in data %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.full_name }}</td>
+      <td>{{ user.followers }}</td>
+      <td>{{ user.location }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock  %}

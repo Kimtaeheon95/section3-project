@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Get Tweets on Twitter
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+See the Tweets of an added User
+{% endblock  %}
+
+{% block main_body  %}
+This is Case-Sensitive
+
+
+<form method="POST" action="/get">
+  <input name="see_tweets" class="form-control" type="text" placeholder="Username">
+  <br/>
+  <input type="submit" class="btn btn-primary" value="Get" />
+</form>
+
+<br/>
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Text</th>
+      <th scope="col">User ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tw in data %}
+    <tr>
+      <th scope="row">{{ tw.id }}</th>
+      <td>{{ tw.text }}</td>
+      <td>{{ tw.user_id }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock  %}

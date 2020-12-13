@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Add Users
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+Type the username that you want to add 
+{% endblock  %}
+
+{% block main_body  %}
+To add the user, press the Add button
+
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Username</th>
+      <th scope="col">Full_name</th>
+      <th scope="col">Followers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ data.id }}</th>
+      <td>{{ data.username }}</td>
+      <td>{{ data.full_name }}</td>
+      <td>{{ data.followers }}</td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+
+
+<form method="POST" action="/addusers">
+  <input name="username" class="form-control" type="text" placeholder="Username">
+  <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+{% endblock  %}

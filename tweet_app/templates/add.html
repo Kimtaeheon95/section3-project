@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}
+Basic Twit Application
+{% endblock  %}
+
+{% block lead  %}
+Post and share Twiter Users' tweets
+{% endblock  %}
+
+
+{% block main_body  %}
+Welcome!
+
+<form method="POST" action="/add">
+  <input name="username" class="form-control" type="text" placeholder="Username">
+  <input type="submit" class="btn btn-primary" value="Add" />
+</form>
+{% endblock  %}

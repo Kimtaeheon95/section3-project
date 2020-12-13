@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Compare and Predict
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+Predict a Tweet by Comparing 2 Twitter Users 
+{% endblock  %}
+
+{% block main_body  %}
+This is Case-Sensitive
+
+<br/><br/>
+<form method="POST" action="/compare">
+  <label for="exampleFormControlSelect1">First User to compare</label>
+  <input name="user1" class="form-control" type="text" placeholder="username">
+  <br/>
+  <label for="exampleFormControlSelect1">Second User to compare</label>  
+  <input name="user2" class="form-control" type="text" placeholder="username">
+  <br/>
+  <label for="exampleFormControlSelect1">Tweet to predict</label>  
+  <input name="tweet_to_predict" class="form-control" type="text" placeholder="Tweet to predict">
+  <br/>
+  <input type="submit" class="btn btn-primary" value="Compare" />
+</form>
+
+{% if statement %}
+<br/>
+<h3>Result : {{ statement }}</h3>
+{% endif %}
+
+<br/>
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Full name</th>
+      <th scope="col">Followers</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in data %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.full_name }}</td>
+      <td>{{ user.followers }}</td>
+      <td>{{ user.location }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock  %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Update an User's Full Name
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+Change an user's full name as you want 
+{% endblock  %}
+
+{% block main_body  %}
+This is Case-Sensitive
+
+<br/><br/>
+<form method="POST" action="/update">
+  <label for="exampleFormControlSelect1">Old Full Name</label>
+  <input name="input_full_old" class="form-control" type="text" placeholder="Current Full Name">
+  <br/>
+  <label for="exampleFormControlSelect1">New Full Name</label>  
+  <input name="input_full_new" class="form-control" type="text" placeholder="New Full Name">
+  <br/>
+  <input type="submit" class="btn btn-primary" value="Update" />
+</form>
+
+<br/>
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Full name</th>
+      <th scope="col">Followers</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in data %}
+    <tr>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.username }}</td>
+      <td>{{ user.full_name }}</td>
+      <td>{{ user.followers }}</td>
+      <td>{{ user.location }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+{% endblock  %}
